@@ -60,6 +60,12 @@ async function run() {
             res.send(result)
         })
 
+        app.get('/blogs/owner/:ownerId', async (req, res) => {
+            const ownerId = req.params.ownerId
+            const query = { owner: ownerId }
+            const result = await blogsCollection.find(query).toArray()
+            res.send(result)
+        })
 
 
         // Connect the client to the server	(optional starting in v4.7)
